@@ -1,0 +1,19 @@
+<%include ../partials/nav.ejs%>
+
+<% for(var i=0;i<ideas.length;i++) {%>
+  <div class="container mb-2">
+  <div class="card card-body">
+    <h4><%= ideas[i].title%></h4>
+    <p><%= ideas[i].details%></p>
+    <a class="btn btn-dark btn-block mb-2" href="ideas/edit/<%=ideas[i].id%>">Edit</a>
+    
+    <form action="/ideas/<%=ideas[i].id%>?_method=DELETE" method="post">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" class="btn btn-danger btn-block" value="Delete">
+    </form>
+  </div>
+</div>
+<%}%>
+<% if(ideas.length===0) {%>
+  <h2>No ideas till now</h2>
+<%}%>

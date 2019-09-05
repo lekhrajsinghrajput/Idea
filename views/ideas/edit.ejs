@@ -1,0 +1,20 @@
+<% include ../partials/nav.ejs%>
+<% include ../partials/_msg.ejs%>
+
+<div class="card card-body">
+
+  <h3 class="card-header">Edit Ideas</h3>
+  <form action="/ideas/<%=idea.id%>?_method=PUT" method="post">
+    <!--hidden input is needed to handle the put request using the method -override middleware-->
+    <input type="hidden" name="_method" value="PUT">
+    <div class="form-group" >
+      <label for="title" required>Title</label>
+      <input type="text" name="title" class="form-control" value="<%=idea.title%>">
+    </div>
+    <div class="form-group ">
+        <label for="details">Details</label>
+        <textarea name="details" class="form-control"  required><%=idea.details%></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
